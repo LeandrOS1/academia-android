@@ -1,6 +1,7 @@
 package joeadyz.pe.academia;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -77,12 +78,55 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add("Matricular");
-        menu.add("Enviar un SMS");
-        menu.add("Visitar Pagina Web");
-        menu.add("Eliminar");
-        menu.add("Ver en mapa");
-        menu.add("Enviar email");
+
+
+        MenuItem llamar = menu.add("Llamar");
+        llamar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent irParaTelefono = new Intent(Intent.ACTION_CALL);
+                Uri llamarA = Uri.parse("tel:" + alumno.getTelefono());
+                irParaTelefono.setData(llamarA);
+
+                startActivity(irParaTelefono);
+                return false;
+            }
+        });
+
+        menu.add("Enviar un SMS");  //tarea
+
+
+        MenuItem site = menu.add("Visitar su Site");
+        site.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent irParaSite = new Intent(Intent.ACTION_VIEW);
+                Uri localSite = Uri.parse("http://" + alumno.getSite());
+                irParaSite.setData(localSite);
+
+                startActivity(irParaSite);
+                return false;
+            }
+        });
+
+        MenuItem eliminar = menu.add("Eliminar");
+        eliminar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                AlumnoDAO dao = new AlumnoDAO(MainActivity.this);
+                dao.eliminar(alumno);
+                cargarLista();
+                dao.close();
+                return false;
+            }
+
+
+        });
+
+
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
