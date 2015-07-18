@@ -1,12 +1,19 @@
 package joeadyz.pe.academia;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import java.io.File;
 
 import joeadyz.pe.academia.dao.AlumnoDAO;
 import joeadyz.pe.academia.modelo.Alumno;
@@ -16,6 +23,8 @@ public class Formulario extends ActionBarActivity {
 
 
     private FormularioHelper formularioHelper;
+    private String rutaArchivo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +70,46 @@ public class Formulario extends ActionBarActivity {
         });
 
 
+        ImageView foto = formularioHelper.getFoto();
+
+
+        foto.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent irParaCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                rutaArchivo = Environment.getExternalStorageDirectory().toString()
+                        + "/" +  System.currentTimeMillis() + ".png";
+
+                File archivo = new File(rutaArchivo);
+                Uri localImagen = Uri.fromFile(archivo);
+
+
+                irParaCamara.putExtra(MediaStore.EXTRA_OUTPUT, localImagen);
+
+                startActivityForResult(irParaCamara, 123);
+
+            }
+        });
+
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 123){
+            if(resultCode == Activity.RESULT_OK){
+                formularioHelper.cargarImagen(rutaArchivo);
+            }else{
+                rutaArchivo = null;
+            }
+        }
+    }
+
+
 
 
 }

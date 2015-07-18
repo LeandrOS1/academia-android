@@ -1,6 +1,9 @@
 package joeadyz.pe.academia;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import joeadyz.pe.academia.modelo.Alumno;
@@ -15,19 +18,22 @@ public class FormularioHelper {
     private EditText editTelefono;
     private EditText editDireccion;
     private RatingBar ratingNota;
+    private ImageView foto;
+    private Alumno alumno;
 
     public FormularioHelper(Formulario formulario){
         editNombre = (EditText) formulario.findViewById(R.id.nombre);
         editSite = (EditText) formulario.findViewById(R.id.site);
         editTelefono = (EditText) formulario.findViewById(R.id.telefono);
         editDireccion = (EditText) formulario.findViewById(R.id.direccion);
-
+        foto = (ImageView)formulario.findViewById(R.id.foto);
         ratingNota = (RatingBar)
                 formulario.findViewById(R.id.nota);
+        alumno = new Alumno();
     }
 
     public Alumno guardarAlumnoDeFormulario() {
-        Alumno alumno = new Alumno();
+
         alumno.setNombre(editNombre.getText().toString());
         alumno.setSite(editSite.getText().toString());
         alumno.setDireccion(editDireccion.getText().toString());
@@ -37,11 +43,31 @@ public class FormularioHelper {
     }
 
     public void colocarAlumnoEnFormulario(Alumno alumnoAModificar) {
-        editNombre.setText(alumnoAModificar.getNombre());
-        editSite.setText(alumnoAModificar.getSite());
-        editDireccion.setText(alumnoAModificar.getDireccion());
-        editTelefono.setText(alumnoAModificar.getTelefono());
-        ratingNota.setRating(alumnoAModificar.getNota().floatValue());
+        alumno = alumnoAModificar;
+        editNombre.setText(alumno.getNombre());
+        editSite.setText(alumno.getSite());
+        editDireccion.setText(alumno.getDireccion());
+        editTelefono.setText(alumno.getTelefono());
+        ratingNota.setRating(alumno.getNota().floatValue());
+
+    }
+
+
+    //CAMARA
+
+    public ImageView getFoto(){
+        return foto;
+    }
+
+
+    public void cargarImagen(String rutaArchivo) {
+
+        alumno.setFoto(rutaArchivo);
+
+        Bitmap imagen = BitmapFactory.decodeFile(rutaArchivo);
+        Bitmap imagenReducida = Bitmap.createScaledBitmap(imagen, 100, 100, true);
+
+        foto.setImageBitmap(imagenReducida);
 
     }
 }
