@@ -8,10 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import joeadyz.pe.academia.dao.AlumnoDAO;
 import joeadyz.pe.academia.modelo.Alumno;
 
 
 public class Formulario extends ActionBarActivity {
+
+
+    private FormularioHelper formularioHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,22 +25,36 @@ public class Formulario extends ActionBarActivity {
 
 
         Intent intent = getIntent();
-        final Alumno alumnoModificar = (Alumno)intent.getSerializableExtra("alumnoSeleccionado");
+        final Alumno alumnoAModificar = (Alumno)intent.getSerializableExtra("alumnoSeleccionado");
 
 
+        formularioHelper = new FormularioHelper(this);
         Button boton = (Button) findViewById(R.id.boton);
 
-        if(alumnoModificar!=null){
+        if(alumnoAModificar!=null){
             boton.setText("Modificar");
-            //colocamos los datos del alumno en el formulario
-            //colocamos los datos del alumno en el formulario
+            formularioHelper.colocarAlumnoEnFormulario(alumnoAModificar);
         }
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //codigo para guardar nuevo o editar alumno
+                Alumno alumno = formularioHelper.guardarAlumnoDeFormulario();
+
+                AlumnoDAO dao = new AlumnoDAO(Formulario.this);
+
+                if(alumnoAModificar == null){
+                    dao.guardar(alumno);  //insert
+                } else {
+                    alumno.setId(alumnoAModificar.getId());  //modificar
+                    dao.modificar(alumno);
+                }
+
+
+                dao.close();
+
+                finish();  //se cierra el formulario para regresar al activity anterior
 
 
             }

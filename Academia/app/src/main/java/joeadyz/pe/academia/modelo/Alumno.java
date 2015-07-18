@@ -74,4 +74,12 @@ public class Alumno implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
+
+
+
 }
