@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -152,6 +153,38 @@ public class MainActivity extends ActionBarActivity {
             case R.id.nuevo:
                 Intent irParaFormulario = new Intent(this, Formulario.class);
                 startActivity(irParaFormulario);
+                break;
+            case R.id.enviar_alumnos:
+                //http://localhost:5000/todo/api/v1.0/alumnos
+                String urlServidor = "http://10.0.2.2:5000/todo/api/v1.0/alumnos";
+
+                AlumnoDAO dao = new AlumnoDAO(this);
+                List<Alumno> alumnos = dao.getLista();
+                dao.close();
+
+                //http://jsonlint.com/
+
+                /**
+                 *
+                 {
+                 "alumnos": [
+                 {
+                 "nombre": "jose",
+                 "nota": 17
+                 },
+                 {
+                 "nombre": "miryan",
+                 "nota": 20
+                 }
+                 ]
+                 }
+                 */
+                //String datosJSON = "{\"alumnos\": [{\"nombre\": \"jose\",\"nota\": 17},{\"nombre\": \"miryan\",\"nota\": 20}]}";
+                String datosJSON = new AlumnoConverter().toJSON(alumnos);
+
+                WebClient client = new WebClient(urlServidor);
+                String respuestaJSON = client.post(datosJSON);
+                Toast.makeText(this, respuestaJSON, Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
