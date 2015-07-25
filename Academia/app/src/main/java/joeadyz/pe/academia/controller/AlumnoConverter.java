@@ -23,6 +23,8 @@ public class AlumnoConverter {
                 js.object();
                 js.key("nombre");
                 js.value(alumno.getNombre());
+                js.key("nota");
+                js.value(alumno.getNota());
                 js.endObject();
             }
 

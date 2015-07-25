@@ -156,7 +156,7 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case R.id.enviar_alumnos:
                 //http://localhost:5000/todo/api/v1.0/alumnos
-                String urlServidor = "http://10.0.2.2:5000/todo/api/v1.0/alumnos";
+                String urlServidor = "http://api.joedayz.pe/android-mooc/api/v1.0/notas";
 
                 AlumnoDAO dao = new AlumnoDAO(this);
                 List<Alumno> alumnos = dao.getLista();
