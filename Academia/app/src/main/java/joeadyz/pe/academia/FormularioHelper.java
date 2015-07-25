@@ -49,7 +49,7 @@ public class FormularioHelper {
         editDireccion.setText(alumno.getDireccion());
         editTelefono.setText(alumno.getTelefono());
         ratingNota.setRating(alumno.getNota().floatValue());
-
+        cargarImagen(alumno.getFoto());
     }
 
 
