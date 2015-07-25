@@ -4,4 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_formulario">Formulario</string>
+    <string name="fotoAlumno">Foto Alumno</string>
+    <string name="nombreAlumno">Nombre Alumno</string>
+    <string name="telefonoAlumno">Telefono Alumno</string>
+    <string name="siteAlumno">Site Alumno</string>
 </resources>

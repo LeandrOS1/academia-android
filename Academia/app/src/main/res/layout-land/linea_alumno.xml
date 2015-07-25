@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fondoAlumno"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/fotoAlumno"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/fotoAlumno"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/nombreAlumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/foto"
+        android:padding="10px"
+        android:text="@string/nombreAlumno"
+        android:textSize="25sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/telefonoAlumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="10px"
+        android:text="@string/telefonoAlumno"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/siteAlumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/telefonoAlumno"
+        android:padding="10px"
+        android:text="@string/siteAlumno"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+</RelativeLayout>

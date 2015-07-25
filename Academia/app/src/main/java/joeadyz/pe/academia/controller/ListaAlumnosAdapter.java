@@ -57,6 +57,16 @@ public class ListaAlumnosAdapter extends BaseAdapter {
 
         ImageView foto = (ImageView) linea.findViewById(R.id.fotoAlumno);
 
+        TextView telefono = (TextView) linea.findViewById(R.id.telefonoAlumno);
+        TextView site = (TextView) linea.findViewById(R.id.siteAlumno);
+
+        if(telefono != null)
+            telefono.setText(alumno.getTelefono());
+
+        if(site != null)
+            site.setText(alumno.getSite());
+
+
         if (alumno.getFoto() != null) {
             Bitmap fotoAlumno = BitmapFactory.decodeFile(alumno.getFoto());
             Bitmap fotoReducida = Bitmap.createScaledBitmap(fotoAlumno,
