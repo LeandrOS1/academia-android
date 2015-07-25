@@ -1,4 +1,4 @@
-package joeadyz.pe.academia;
+package joeadyz.pe.academia.controller;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,14 +7,13 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
 
+import joeadyz.pe.academia.R;
 import joeadyz.pe.academia.dao.AlumnoDAO;
 import joeadyz.pe.academia.modelo.Alumno;
 

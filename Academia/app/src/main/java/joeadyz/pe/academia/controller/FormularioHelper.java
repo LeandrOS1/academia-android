@@ -1,4 +1,4 @@
-package joeadyz.pe.academia;
+package joeadyz.pe.academia.controller;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import joeadyz.pe.academia.R;
 import joeadyz.pe.academia.modelo.Alumno;
 
 /**

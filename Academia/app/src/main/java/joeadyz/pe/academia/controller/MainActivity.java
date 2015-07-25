@@ -1,4 +1,4 @@
-package joeadyz.pe.academia;
+package joeadyz.pe.academia.controller;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,10 +11,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
+import joeadyz.pe.academia.R;
 import joeadyz.pe.academia.dao.AlumnoDAO;
 import joeadyz.pe.academia.modelo.Alumno;
 
@@ -69,10 +69,14 @@ public class MainActivity extends ActionBarActivity {
         List<Alumno> alumnos = dao.getLista();
         dao.close();
 
-        int layout = android.R.layout.simple_list_item_1;
-        ArrayAdapter<Alumno> adapter = new ArrayAdapter<Alumno>(this, layout, alumnos);
+
+        ListaAlumnosAdapter adapter = new
+                ListaAlumnosAdapter(alumnos, this);
+
 
         lista.setAdapter(adapter);
+
+
 
     }
 
