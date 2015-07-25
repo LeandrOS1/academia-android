@@ -155,36 +155,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(irParaFormulario);
                 break;
             case R.id.enviar_alumnos:
-                //http://localhost:5000/todo/api/v1.0/alumnos
-                String urlServidor = "http://10.0.2.2:5000/todo/api/v1.0/alumnos";
-
-                AlumnoDAO dao = new AlumnoDAO(this);
-                List<Alumno> alumnos = dao.getLista();
-                dao.close();
-
-                //http://jsonlint.com/
-
-                /**
-                 *
-                 {
-                 "alumnos": [
-                 {
-                 "nombre": "jose",
-                 "nota": 17
-                 },
-                 {
-                 "nombre": "miryan",
-                 "nota": 20
-                 }
-                 ]
-                 }
-                 */
-                //String datosJSON = "{\"alumnos\": [{\"nombre\": \"jose\",\"nota\": 17},{\"nombre\": \"miryan\",\"nota\": 20}]}";
-                String datosJSON = new AlumnoConverter().toJSON(alumnos);
-
-                WebClient client = new WebClient(urlServidor);
-                String respuestaJSON = client.post(datosJSON);
-                Toast.makeText(this, respuestaJSON, Toast.LENGTH_LONG).show();
+                new EnviaAlumnosTask(this).execute();
                 break;
             default:
                 break;

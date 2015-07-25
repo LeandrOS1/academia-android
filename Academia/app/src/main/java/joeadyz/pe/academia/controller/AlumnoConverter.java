@@ -21,8 +21,8 @@ public class AlumnoConverter {
 
             for (Alumno alumno : alumnos) {
                 js.object();
-                js.key("nombre");
-                js.value(alumno.getNombre());
+                js.key("nombre").value(alumno.getNombre());
+                js.key("nota").value(alumno.getNota());
                 js.endObject();
             }
 
