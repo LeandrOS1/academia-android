@@ -37,7 +37,7 @@ public class PruebasActivity extends FragmentActivity {
 
     private boolean isTablet() {
 
-        return false;
+        return getResources().getBoolean(R.bool.inTable);
     }
 
 }
