@@ -154,6 +154,10 @@ public class MainActivity extends ActionBarActivity {
                 Intent irParaFormulario = new Intent(this, Formulario.class);
                 startActivity(irParaFormulario);
                 break;
+            case R.id.recibir_pruebas:
+                Intent irParaPruebas = new Intent(this, PruebasActivity.class);
+                startActivity(irParaPruebas);
+                break;
             case R.id.enviar_alumnos:
                 new EnviaAlumnosTask(this).execute();
                 break;
