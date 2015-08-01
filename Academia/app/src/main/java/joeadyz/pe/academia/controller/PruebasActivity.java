@@ -1,44 +1,43 @@
 package joeadyz.pe.academia.controller;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import java.util.Arrays;
-import java.util.List;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
 
 import joeadyz.pe.academia.R;
-import joeadyz.pe.academia.modelo.Prueba;
 
-public class PruebasActivity extends ActionBarActivity {
+public class PruebasActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_pruebas);
 
-        ListView listaDePruebas = (ListView) findViewById(R.id.pruebas);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction beginTransaction = manager.beginTransaction();
 
-        Prueba prueba1 = new Prueba("31/07/2015", "Spring");
-        prueba1.setTopicos(Arrays.asList("Spring MVC", "Spring JDBC",
-                "Spring JMS"));
+        if(isTablet()){
+            beginTransaction.replace(R.id.lista_pruebas_fragment, new PruebasFragment());
+            beginTransaction.replace(R.id.pruebas_detalle_fragment,
+                    new DetalleFragment());
+        }else{
+            beginTransaction.replace(R.id.unico, new PruebasFragment());
+        }
 
-        Prueba prueba2 = new Prueba("01/08/2015", "OCJP7");
-        prueba2.setTopicos(Arrays.asList("POO", "Hilos",
-                "JDBC"));
-
-        List<Prueba> pruebas = Arrays.asList(prueba1, prueba2);
-
-        int layout = android.R.layout.simple_list_item_1;
-        ArrayAdapter<Prueba> adapter = new ArrayAdapter<Prueba> (this,
-                layout, pruebas);
-        listaDePruebas.setAdapter(adapter);
+        beginTransaction.commit();
 
 
 
 
+    }
 
+    private boolean isTablet() {
+
+        return false;
     }
 
 }
