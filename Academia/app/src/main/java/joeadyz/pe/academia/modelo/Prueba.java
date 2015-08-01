@@ -27,4 +27,28 @@ public class Prueba {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<String> getTopicos() {
+        return topicos;
+    }
+
+    public void setTopicos(List<String> topicos) {
+        this.topicos = topicos;
+    }
 }
