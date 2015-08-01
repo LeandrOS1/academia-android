@@ -8,4 +8,5 @@
     <string name="nombreAlumno">Nombre Alumno</string>
     <string name="telefonoAlumno">Telefono Alumno</string>
     <string name="siteAlumno">Site Alumno</string>
+    <string name="title_activity_pruebas">PruebasActivity</string>
 </resources>
