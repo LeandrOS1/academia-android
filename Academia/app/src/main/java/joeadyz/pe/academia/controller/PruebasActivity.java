@@ -2,8 +2,6 @@ package joeadyz.pe.academia.controller;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,7 +16,7 @@ public class PruebasActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pruebas);
+        setContentView(R.layout.lista_pruebas);
 
         ListView listaDePruebas = (ListView) findViewById(R.id.pruebas);
 
