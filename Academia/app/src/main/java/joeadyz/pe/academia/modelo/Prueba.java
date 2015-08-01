@@ -20,6 +20,11 @@ public class Prueba {
         this.materia = materia;
     }
 
+    @Override
+    public String toString() {
+        return materia + " - " + fecha;
+    }
+
     public String getFecha() {
         return fecha;
     }
