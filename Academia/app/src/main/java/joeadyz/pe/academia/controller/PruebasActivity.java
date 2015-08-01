@@ -15,7 +15,7 @@ public class PruebasActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lista_pruebas);
+        setContentView(R.layout.fragment_pruebas);
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction beginTransaction = manager.beginTransaction();

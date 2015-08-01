@@ -26,7 +26,7 @@ public class PruebasFragment extends Fragment {
 
 
 
-        ListView listaDePruebas = (ListView) listaPruebas.findViewById(R.id.pruebas);
+        ListView lista = (ListView) listaPruebas.findViewById(R.id.pruebas);
 
         Prueba prueba1 = new Prueba("31/07/2015", "Spring");
         prueba1.setTopicos(Arrays.asList("Spring MVC", "Spring JDBC",
@@ -41,10 +41,10 @@ public class PruebasFragment extends Fragment {
         int layout = android.R.layout.simple_list_item_1;
         ArrayAdapter<Prueba> adapter = new ArrayAdapter<Prueba> (getActivity(),
                 layout, pruebas);
-        listaDePruebas.setAdapter(adapter);
+        lista.setAdapter(adapter);
 
 
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return listaPruebas;
     }
 }
