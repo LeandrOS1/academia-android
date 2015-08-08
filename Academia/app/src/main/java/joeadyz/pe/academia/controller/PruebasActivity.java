@@ -51,7 +51,11 @@ public class PruebasActivity extends FragmentActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.pruebas_detalle_fragment, detallePrueba);
-        transaction.addToBackStack(null);
+
+        if(!isTablet()) {
+            transaction.addToBackStack(null);
+        }
+
         transaction.commit();
 
 
