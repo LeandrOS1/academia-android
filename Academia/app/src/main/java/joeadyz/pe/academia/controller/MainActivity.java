@@ -161,6 +161,10 @@ public class MainActivity extends ActionBarActivity {
             case R.id.enviar_alumnos:
                 new EnviaAlumnosTask(this).execute();
                 break;
+            case R.id.mapa:
+                Intent mapa = new Intent(this, MostrarAlumnosProximosActivity.class);
+                startActivity(mapa);
+                break;
             default:
                 break;
         }
