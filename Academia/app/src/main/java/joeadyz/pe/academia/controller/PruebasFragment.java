@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,7 +44,14 @@ public class PruebasFragment extends Fragment {
                 layout, pruebas);
         lista.setAdapter(adapter);
 
-
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+                Prueba seleccionada = (Prueba) adapter.getItemAtPosition(position);
+                PruebasActivity calendarioPruebas = (PruebasActivity) getActivity();
+                calendarioPruebas.seleccionaPrueba(seleccionada);
+            }
+        });
 
         return listaPruebas;
     }

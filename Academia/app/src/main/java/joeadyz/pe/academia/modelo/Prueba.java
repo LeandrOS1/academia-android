@@ -1,12 +1,13 @@
 package joeadyz.pe.academia.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Celeritech Peru on 01/08/2015.
  */
-public class Prueba {
+public class Prueba implements Serializable {
     private String fecha;
     private String materia;
     private String descripcion;

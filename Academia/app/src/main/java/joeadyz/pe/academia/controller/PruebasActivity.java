@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 
 
 import joeadyz.pe.academia.R;
+import joeadyz.pe.academia.modelo.Prueba;
 
 public class PruebasActivity extends FragmentActivity {
 
@@ -40,4 +41,22 @@ public class PruebasActivity extends FragmentActivity {
         return getResources().getBoolean(R.bool.inTable);
     }
 
+    public void seleccionaPrueba(Prueba prueba) {
+        Bundle argumentos = new Bundle();
+        argumentos.putSerializable("prueba", prueba);
+
+        DetalleFragment detallePrueba = new DetalleFragment();
+        detallePrueba.setArguments(argumentos);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.pruebas_detalle_fragment, detallePrueba);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+
+
+
+
+    }
 }
